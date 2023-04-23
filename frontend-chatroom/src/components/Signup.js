@@ -1,14 +1,28 @@
 
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import data from "../data/data"
 const Signup = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
+  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("Signup submitted!");
-    // Do something with name, email, and password
+    data.signup(name, password, email)
+      .then((success) => {
+        if (success === 1) {
+          console.log("signup success")
+          navigate("/");
+        } else {
+          console.log(success);
+          setErrorMessage("Invalid signup credentials");
+        }
+      })
+      .catch((error) => {});
   };
 
   return (
@@ -38,6 +52,7 @@ const Signup = () => {
         onChange={(e) => setPassword(e.target.value)}
         required
       />
+      {errorMessage && <div>{errorMessage}</div>}
       <button type="submit">Signup</button>
     </form>
   );

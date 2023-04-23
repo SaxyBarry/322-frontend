@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import data from "../data/data";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -8,16 +9,24 @@ const Login = () => {
   const [authenticated, setauthenticated] = useState(
     localStorage.getItem("authenticated") === "true"
   );
-  const users = [{ username: "Jane", password: "test" }];
-
+   const [errorMessage, setErrorMessage] = useState("");
   const handleSubmit = (e) => {
     e.preventDefault();
-    const account = users.find((user) => user.username === username);
-    if (account && account.password === password) {
-      localStorage.setItem("authenticated", "true");
-      setauthenticated("true");
-      navigate("/chatroom");
-    }
+    data.login(username, password)
+      .then((success) => {
+        if (success === 1) {
+            localStorage.setItem("authenticated", "true");
+            localStorage.setItem("user", username)
+            setauthenticated("true");
+            navigate("/chatroom");
+        } else {
+          console.log(success);
+          setErrorMessage("Invalid login credentials");
+        }
+      })
+      .catch((error) => {
+        
+      });
   };
 
   return (
@@ -34,7 +43,8 @@ const Login = () => {
           name="Password"
           onChange={(e) => setpassword(e.target.value)}
         />
-        <input type="submit" value="Submit" />
+        {errorMessage && <div>{errorMessage}</div>}
+        <input type="submit" value="Login" />
       </form>
     </div>
   );

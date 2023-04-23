@@ -1,16 +1,16 @@
 import "../styles/MessageBoard.css";
 import MessageBox from "./MessageBox";
 import MessageBoxLoggedIn from "./MessageBoxLoggedIn";
-function MessageBoard() {
+function MessageBoard(props) {
   return (
-      <div className="MessageBoard">
-        <MessageBox />
-        <MessageBoxLoggedIn />
-        <MessageBox />
-        <MessageBox />
-        <MessageBoxLoggedIn />
-        <MessageBoxLoggedIn />
-      </div>
+    <div className="MessageBoard">
+      <MessageBox />
+      <MessageBoxLoggedIn user={props.user} />
+      <MessageBox />
+      <MessageBox />
+      <MessageBoxLoggedIn user={props.user} />
+      <MessageBoxLoggedIn user={props.user} />
+    </div>
   );
 }
 
