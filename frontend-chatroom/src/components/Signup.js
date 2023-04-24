@@ -1,10 +1,10 @@
 
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import data from "../data/data"
+import userdata from "../data/userdata"
 const Signup = () => {
   const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
+  const [phone, setphone] = useState("");
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
   const navigate = useNavigate();
@@ -12,7 +12,7 @@ const Signup = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("Signup submitted!");
-    data.signup(name, password, email)
+    userdata.signup(name, password, phone)
       .then((success) => {
         if (success === 1) {
           console.log("signup success")
@@ -24,6 +24,13 @@ const Signup = () => {
       })
       .catch((error) => {});
   };
+    const formatPhoneNumber = (phoneNumber) => {
+      const formattedPhoneNumber = phoneNumber.replace(
+        /(\d{3})(\d{3})(\d{4})/,
+        "($1) $2-$3"
+      );
+      return formattedPhoneNumber;
+    };
 
   return (
     <form onSubmit={handleSubmit}>
@@ -36,12 +43,12 @@ const Signup = () => {
         onChange={(e) => setName(e.target.value)}
         required
       />
-      <label htmlFor="email">Email:</label>
+      <label htmlFor="phone">phone:</label>
       <input
-        type="email"
-        id="email"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
+        type="number"
+        id="phone"
+        value={phone}
+        onChange={(e) => setphone(e.target.value)}
         required
       />
       <label htmlFor="password">Password:</label>

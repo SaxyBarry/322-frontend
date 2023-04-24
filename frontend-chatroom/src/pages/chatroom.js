@@ -28,8 +28,8 @@ const Chatroom = () => {
       <div>
         <h1>Chatroom</h1>
         {<div>Welcome {user}</div>}
-        <MessageBoard user={user}/>
-        <TextInput />
+        <MessageBoard user={user} />
+        <TextInput user={user} />
       </div>
     );
   }

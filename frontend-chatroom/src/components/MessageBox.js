@@ -1,10 +1,10 @@
 import "../styles/MessageBoxLoggedIn.css";
-function MessageBox() {
+function MessageBox(props) {
   return (
     <div className="MessageBox">
-      <h1>Chatter 2</h1>
+      <h1>{props.user}</h1>
       <h3>12:33 4/20/2023</h3>
-      <p>Thank you</p>
+      <p>{props.messagetext}</p>
     </div>
   );
 }

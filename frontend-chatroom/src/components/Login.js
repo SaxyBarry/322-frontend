@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import data from "../data/data";
+import userdata from "../data/userdata";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -12,7 +12,7 @@ const Login = () => {
    const [errorMessage, setErrorMessage] = useState("");
   const handleSubmit = (e) => {
     e.preventDefault();
-    data.login(username, password)
+    userdata.login(username, password)
       .then((success) => {
         if (success === 1) {
             localStorage.setItem("authenticated", "true");

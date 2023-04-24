@@ -21,7 +21,7 @@ let login =  (username, password) => {
     });
 };
 
-let signup = (username, password, email) => {
+let signup = (username, password, phone) => {
   return fetch(host + "/users", {
     method: "POST",
     headers: {
@@ -30,7 +30,7 @@ let signup = (username, password, email) => {
     body: JSON.stringify({
       "username": username,
       "password": password,
-      "email":email
+      "phoneNumber":phone
     }),
   })
     .then((response) => 
@@ -54,9 +54,9 @@ let signup = (username, password, email) => {
     });
 };
 
-let data = {
+let userdata = {
   login: login,
   signup:signup
 };
 
-export default data;
+export default userdata;
