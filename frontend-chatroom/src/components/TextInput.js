@@ -7,7 +7,7 @@ function TextInput(props) {
       e.preventDefault();
       console.log(chatbox)
       messagedata.sendMessage(chatbox, props.user)
-      window.location.reload();
+      props.setpingAPI(true);
     };
   return (
     <div className="TextInput">

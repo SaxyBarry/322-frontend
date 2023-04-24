@@ -8,23 +8,12 @@ function MessageBoard(props) {
   const [userMessages, setUserMessages] = useState([]);
   useEffect(() => {
     const messages = messagedata.getMessages();
-    messages.then((result)=>{
-        // const m1 = []
-        // const m2 = []
-        // setotherMessages([])
-        // for(const x in result){
-        //     if(result[x].username === props.user){
-        //         m1.push(result[x])
-        //     }else{
-        //         m2.push(result[x])
-        //     }
-        // }
-        // setUserMessages(m1);
-        // setotherMessages(m2);
-        setUserMessages(result)
-    })
+    messages.then((result) => {
+      setUserMessages(result);
+    });
     setLoading(false);
-  }, []);
+    props.setpingAPI(false);
+  }, [props, props.pingApi]);
   if(loading){
     return(<div>Loading</div>)
   }else{

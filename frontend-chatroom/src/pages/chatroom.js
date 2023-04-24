@@ -7,6 +7,7 @@ const Chatroom = () => {
   const [authenticated, setauthenticated] = useState(false);
   const [loading, setLoading] = useState(true);
   const [user, setUser] = useState(null);
+  const [pingApi, setpingAPI] = useState(false) 
 
   useEffect(() => {
     const loggedInUser = localStorage.getItem("authenticated");
@@ -28,8 +29,8 @@ const Chatroom = () => {
       <div>
         <h1>Chatroom</h1>
         {<div>Welcome {user}</div>}
-        <MessageBoard user={user} />
-        <TextInput user={user} />
+        <MessageBoard user={user} pingApi={pingApi} setpingAPI={setpingAPI} />
+        <TextInput user={user} pingApi={pingApi} setpingAPI={setpingAPI} />
       </div>
     );
   }
