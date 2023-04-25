@@ -1,4 +1,4 @@
-let host = "http://oop-project-backend-production.up.railway.app";
+let host = "https://oop-project-backend-production.up.railway.app";
 
 let deleteMessage = (id, user, text) => {
     fetch(host + "/admin", {
