@@ -22,12 +22,18 @@ function MessageBoard(props) {
       message.username === props.user ? (
         <MessageBoxLoggedIn
           key={message.id}
+          id={message.id}
+          pingApi={props.pingApi}
+          setpingAPI={props.setpingAPI}
           user={message.username}
           messagetext={message.messageContent}
         />
       ) : (
         <MessageBox
           key={message.id}
+          id={message.id}
+          pingApi={props.pingApi}
+          setpingAPI={props.setpingAPI}
           user={message.username}
           messagetext={message.messageContent}
         />
@@ -37,7 +43,7 @@ function MessageBoard(props) {
     return (
       <div className="MessageBoard">
         {userMessageComponents}
-        </div>
+      </div>
     );
   }
 }

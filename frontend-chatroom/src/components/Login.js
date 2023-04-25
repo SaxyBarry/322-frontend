@@ -14,11 +14,18 @@ const Login = () => {
     e.preventDefault();
     userdata.login(username, password)
       .then((success) => {
-        if (success === 1) {
+        if (success === true) {
             localStorage.setItem("authenticated", "true");
             localStorage.setItem("user", username)
+            localStorage.setItem("admin", true)
             setauthenticated("true");
             navigate("/chatroom");
+        }else if (success === false) {
+          localStorage.setItem("authenticated", "true");
+          localStorage.setItem("user", username);
+          localStorage.setItem("admin", false);
+          setauthenticated("true");
+          navigate("/chatroom");
         } else {
           console.log(success);
           setErrorMessage("Invalid login credentials");

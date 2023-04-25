@@ -11,6 +11,7 @@ const Chatroom = () => {
 
   useEffect(() => {
     const loggedInUser = localStorage.getItem("authenticated");
+    console.log(localStorage.getItem("admin"))
     if (loggedInUser) {
       setauthenticated(loggedInUser === "true");
       setUser(localStorage.getItem("user"));

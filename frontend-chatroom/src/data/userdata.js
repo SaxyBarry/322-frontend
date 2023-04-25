@@ -13,8 +13,10 @@ let login =  (username, password) => {
   })
     .then((response) => response.text())
     .then((data) => {
-    if(data === "Successful login"){
-        return 1;
+    if(data === "false"){
+        return false;
+    }else if(data === "true"){
+        return true;
     }else{return 0;}})
     .catch((error) => {
       console.log(error);
