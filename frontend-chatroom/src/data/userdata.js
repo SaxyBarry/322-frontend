@@ -1,4 +1,4 @@
-let host = "http://localhost:8085";
+let host = "https://oop-project-backend-production.up.railway.app";
 
 let login =  (username, password) => {
   return fetch(host + "/users/login", {

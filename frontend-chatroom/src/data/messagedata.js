@@ -1,4 +1,4 @@
-let host = "http://localhost:8085";
+let host = "https://oop-project-backend-production.up.railway.app";
 
 let getMessages = () => {
   return fetch(host + "/messages", {
